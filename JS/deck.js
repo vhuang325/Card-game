@@ -19,13 +19,39 @@ class Deck{
           [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]];
         }
       }
-    // generateCards(){
-    //     for(const rank of this.ranks){
-    //         for(const suit of this.suits){
-    //             this.cards.push(new Card(rank, suit))
-    //         }
-    //     }
-    // }
+
+    draw(){
+        return this.cards.pop();
+    }
+   
+    deal(numHands = 4, cardsPerHand = 2){
+        let hands = [];
+        for(let i = 0; i < numHands; i++){
+            const hand = new Hand();
+            for(let j = 0; j < cardsPerHand; j++){
+                hand.addCard(this.draw());
+            }
+            hands.push(hand);
+        }
+        console.log(hands);
+        return hands;
+    }
+
+    burn(){
+
+    }
+
+    flop(){
+
+    }
+
+    turn(){
+
+    }
+
+    river(){
+        
+    }
 }
 
 
@@ -34,24 +60,24 @@ class Deck{
 const deck = new Deck();
 deck.generateCards();
 deck.shuffleCards();
+// deck.draw();
+deck.deal();
+console.log(deck);
+console.log(deck.cards);
 
-// GENERATE CARDS
+// Generate Cards
 
 // for (let i = 0; i < deck.cards.length; i++) {
 //     const card = deck.cards[i];
 //     console.log(card.rank + " of " + card.suit);
 //   };
 
-// SHUFFLE CARDS
+// Shuffle Cards
 
 //   for (let i = 0; i < deck.cards.length; i++) {
 //     const card = deck.cards[i];
 //     console.log(card.rank + " of " + card.suit);
 //   }
 
-// for (let card of deck.cards) {
-//   console.log(card.rank + " of " + card.suit);
-// }
-// const c = new Deck
-// console.log(c);
-// console.log(c.generateCards());
+// Draw
+// console.log(deck.draw());
